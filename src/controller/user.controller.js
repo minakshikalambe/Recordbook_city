@@ -37,21 +37,21 @@ router.get("/city",async (req,res)=>{
   
 });
 
-router.get("/month/:id",async (req,res)=>{
-     const{id}=req.params;
-        console.log(id)
-    try {
-        const users=await User.find().lean().exec();
-       let userFilterd= users.map((user)=>{return{...user,month:new Date(user.registrationDate).getMonth()}})
+// router.get("/month/:id",async (req,res)=>{
+//      const{id}=req.params;
+//         console.log(id)
+//     try {
+//         const users=await User.find().lean().exec();
+//        let userFilterd= users.map((user)=>{return{...user,month:new Date(user.registrationDate).getMonth()}})
 
-       let filterd=userFilterd.filter((e)=>{return e.month==id})
-       console.log(userFilterd)
-       res.send(filterd)
-    } catch (error) {
-        return res.status(500).send({message:error.message})
-    }
+//        let filterd=userFilterd.filter((e)=>{return e.month==id})
+//        console.log(userFilterd)
+//        res.send(filterd)
+//     } catch (error) {
+//         return res.status(500).send({message:error.message})
+//     }
 
-});
+// });
 
 
 module.exports = router;
